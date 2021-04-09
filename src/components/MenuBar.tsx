@@ -7,6 +7,7 @@ interface Props {
   addText: () => void;
   addImage: () => void;
   addDrawing: () => void;
+  addImageFromGallery: () => void;
   isPdfLoaded: boolean;
   savingPdfStatus: boolean;
   savePdf: () => void;
@@ -16,6 +17,7 @@ export const MenuBar: React.FC<Props> = ({
   openHelp,
   uploadNewPdf,
   addDrawing,
+  addImageFromGallery,
   addText,
   addImage,
   isPdfLoaded,
@@ -28,22 +30,30 @@ export const MenuBar: React.FC<Props> = ({
       {isPdfLoaded && (
         <>
           <Dropdown 
-            data-testid='edit-menu-dropdown'
+            data-testid='edit-menu-dropdown1'
             item 
             closeOnBlur 
-            icon="edit outline" simple
+            icon="text height" simple
+            onClick={addText}
+          />
+            <Dropdown 
+            data-testid='edit-menu-dropdown2'
+            item 
+            closeOnBlur 
+            icon="images" simple
           >
             <Dropdown.Menu>
-              <Dropdown.Item onClick={addText}>Add Text</Dropdown.Item>
               <Dropdown.Item onClick={addImage}>Add Image</Dropdown.Item>
               <Dropdown.Item onClick={addDrawing}>Add Drawing</Dropdown.Item>
+              <Dropdown.Item onClick={addImageFromGallery}>Add Image from Gallery</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <Menu.Item
             data-testid='save-menu-item'
-            name={savingPdfStatus ? 'Saving...' : 'Save'}
             disabled={savingPdfStatus}
             onClick={savePdf}
+            icon="save" simple
+
           />
           <Menu.Item
             data-testid='upload-menu-item' 
