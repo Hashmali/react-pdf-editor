@@ -25,6 +25,7 @@ interface ImageAttachment extends AttachmentBase {
 }
 interface GalleryAttachment extends AttachmentBase {
   img: HTMLImageElement;
+  symbolName: string;
 }
 
 interface DrawingAttachment extends AttachmentBase {

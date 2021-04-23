@@ -90,12 +90,14 @@ const App: React.FC = () => {
     addAttachment(newTextAttachment);
   };
 
-  const addImageFromGallery = async (drawing?: { url: string }) => {
+  const addImageFromGallery = async (drawing?: {
+    url: string;
+    symbolName: string;
+  }) => {
     if (!drawing) return;
 
     const img = await readAsImage(drawing.url as string);
     const { width, height } = img;
-
     const id = ggID();
     const newGalleryAttachment: GalleryAttachment = {
       id,
@@ -105,7 +107,9 @@ const App: React.FC = () => {
       x: 0,
       y: 0,
       img,
+      symbolName: drawing.symbolName,
     };
+    console.log(newGalleryAttachment.symbolName);
 
     addAttachment(newGalleryAttachment);
   };
