@@ -1,4 +1,3 @@
-import icon1 from '../../src/symbols/page 1/בית-תקע-דו-קטבי.png';
 
 function importAll(r) {
     let images = [];

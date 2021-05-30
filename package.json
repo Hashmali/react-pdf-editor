@@ -1,8 +1,8 @@
 {
+  "homepage": ".",
   "name": "pdf-editor",
   "version": "0.1.2",
   "private": true,
-  "homepage": "https://snamoah.github.io/react-pdf-editor",
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -12,14 +12,10 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "lint": "eslint --ignore-path .gitignore 'src/**/*.ts' --color --fix  -c ./.eslintrc.js",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
-    "prettier": "prettier --write **/**/*.{ts,tsx,json,md}"
+    "eject": "react-scripts eject"
   },
   "prettier": {
     "singleQuote": true,

@@ -24,41 +24,45 @@ export const MenuBar: React.FC<Props> = ({
   savingPdfStatus,
   savePdf,
 }) => (
-  <Menu pointing>
+  <Menu pointing inverted secondary style={{ backgroundColor: 'black' }}>
     <Menu.Item header>PDF Editor</Menu.Item>
     <Menu.Menu position="right">
       {isPdfLoaded && (
         <>
-          <Dropdown 
-            data-testid='edit-menu-dropdown1'
-            item 
-            closeOnBlur 
-            icon="text height" simple
+          <Dropdown
+            data-testid="edit-menu-dropdown1"
+            item
+            closeOnBlur
+            icon="text height"
+            simple
             onClick={addText}
           />
-            <Dropdown 
-            data-testid='edit-menu-dropdown2'
-            item 
-            closeOnBlur 
-            icon="images" simple
+          <Dropdown
+            data-testid="edit-menu-dropdown2"
+            item
+            closeOnBlur
+            icon="images"
+            simple
           >
             <Dropdown.Menu>
               <Dropdown.Item onClick={addImage}>Add Image</Dropdown.Item>
               <Dropdown.Item onClick={addDrawing}>Add Drawing</Dropdown.Item>
-              <Dropdown.Item onClick={addImageFromGallery}>Add Image from Gallery</Dropdown.Item>
+              <Dropdown.Item onClick={addImageFromGallery}>
+                Add Image from Gallery
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <Menu.Item
-            data-testid='save-menu-item'
+            data-testid="save-menu-item"
             disabled={savingPdfStatus}
             onClick={savePdf}
-            icon="save" simple
-
+            icon="save"
+            simple
           />
           <Menu.Item
-            data-testid='upload-menu-item' 
-            name="Upload New" 
-            onClick={uploadNewPdf} 
+            data-testid="upload-menu-item"
+            name="Upload New"
+            onClick={uploadNewPdf}
           />
         </>
       )}

@@ -1,13 +1,10 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import 'semantic-ui-css/semantic.min.css';
-
 import { Container, Grid, Button, Segment } from 'semantic-ui-react';
 import { MenuBar } from './components/MenuBar';
-
 import { DrawingModal } from './modals/components/DrawingModal';
 import { GalleryModal } from './modals/components/GalleryModal';
 import { HelpModal } from './modals/components/HelpModal';
-
 import { usePdf, Pdf } from './hooks/usePdf';
 import { AttachmentTypes } from './entities';
 import { ggID } from './utils/helpers';
@@ -16,11 +13,12 @@ import { useUploader, UploadTypes } from './hooks/useUploader';
 import { Empty } from './components/Empty';
 import { Page } from './components/Page';
 import { Attachments } from './components/Attachments';
-import { readAsPDF, readAsDataURL, readAsImage } from './utils/asyncReader';
+import { readAsImage } from './utils/asyncReader';
 const App: React.FC = () => {
   const [helpModalOpen, setHelpModalOpen] = useState(false);
   const [drawingModalOpen, setDrawingModalOpen] = useState(false);
   const [galleryModalOpen, setGalleryModalOpen] = useState(false);
+  const [goals, setGoals] = React.useState<string[]>([]);
 
   const {
     file,
@@ -109,8 +107,15 @@ const App: React.FC = () => {
       img,
       symbolName: drawing.symbolName,
     };
-    console.log(newGalleryAttachment.symbolName);
 
+    setGoals([
+      ...goals,
+      newGalleryAttachment.symbolName.substring(
+        0,
+        newGalleryAttachment.symbolName.length - 4
+      ),
+    ]);
+    console.log(newGalleryAttachment.symbolName);
     addAttachment(newGalleryAttachment);
   };
 
@@ -133,6 +138,9 @@ const App: React.FC = () => {
   };
 
   useLayoutEffect(() => setPageIndex(pageIndex), [pageIndex, setPageIndex]);
+  useEffect(() => {
+    console.log(goals);
+  }, [goals]);
 
   const hiddenInputs = (
     <>

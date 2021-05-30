@@ -1,12 +1,10 @@
-import React, { useState, createRef, useEffect } from 'react';
-import { Modal, Button, Menu, Dropdown, Label } from 'semantic-ui-react';
-import { Color } from '../../entities';
+import React from 'react';
+import { Modal, Button } from 'semantic-ui-react';
 import symbols from '../../utils/symbols';
 import jiraiya from './jiraiya.png';
 import naruto from './naruto.png';
 import kakashi from './kakashi.png';
 import levi from './levi.png';
-import src from '*.bmp';
 
 interface Props {
   open: boolean;
@@ -39,6 +37,7 @@ export const GalleryModal = ({ open, dismiss, confirm, drawing }: Props) => {
           {symbols.map((symbol, index) => {
             return (
               <img
+                alt="description"
                 className="ui image"
                 src={symbol.icon}
                 onClick={() => handleDone(symbol.icon, symbol.name)}
@@ -49,21 +48,25 @@ export const GalleryModal = ({ open, dismiss, confirm, drawing }: Props) => {
 
         <div className="ui tiny images">
           <img
+            alt="description"
             className="ui image"
             src={naruto}
             onClick={() => handleDone(naruto, 'naruto')}
           />
           <img
+            alt="description"
             className="ui image"
             src={jiraiya}
             onClick={() => handleDone(jiraiya, 'jiraiya')}
           />
           <img
+            alt="description"
             className="ui image"
             src={kakashi}
             onClick={() => handleDone(kakashi, 'kakashi')}
           />
           <img
+            alt="description"
             className="ui image"
             src={levi}
             onClick={() => handleDone(levi, 'levi')}
