@@ -14,6 +14,8 @@ import { Empty } from './components/Empty';
 import { Page } from './components/Page';
 import { Attachments } from './components/Attachments';
 import { readAsImage } from './utils/asyncReader';
+import PdfCreate from '../src/priceQuotation/PdfCreate';
+
 const App: React.FC = () => {
   const [helpModalOpen, setHelpModalOpen] = useState(false);
   const [drawingModalOpen, setDrawingModalOpen] = useState(false);
@@ -184,11 +186,12 @@ const App: React.FC = () => {
         uploadNewPdf={handlePdfClick}
         isPdfLoaded={!!file}
       />
-
       {!file ? (
         <Empty loading={isUploading} uploadPdf={handlePdfClick} />
       ) : (
         <Grid>
+          <PdfCreate items={goals}></PdfCreate>
+
           <Grid.Row>
             <Grid.Column width={3} verticalAlign="middle" textAlign="left">
               {isMultiPage && !isFirstPage && (
@@ -239,7 +242,6 @@ const App: React.FC = () => {
         dismiss={() => setGalleryModalOpen(false)}
         confirm={addImageFromGallery}
       />
-
       <HelpModal open={helpModalOpen} dismiss={() => setHelpModalOpen(false)} />
     </Container>
   );
